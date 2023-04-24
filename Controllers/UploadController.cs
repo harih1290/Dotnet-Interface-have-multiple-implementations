@@ -13,7 +13,11 @@ namespace runtimeass.Controllers{
         [Route("api/Upload/xget")]
         public string xget(string value,string type){
             var helloer = _idocupload.FirstOrDefault(h => h.GetType().Name == type);
-            return helloer?.XGet(value);
+            string res=helloer?.XGet(value);
+            if(res!=null){
+                return res;
+            }
+            return "Type not exists";
         }
     }
 }
